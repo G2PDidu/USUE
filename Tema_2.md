@@ -77,7 +77,7 @@ two = 'Mir!'
 print(one+two)
 ```
 ### Результат.
-![Меню](pictures/2.png)
+![Меню](pictures/3.png)
 
 ## Выводы
 
