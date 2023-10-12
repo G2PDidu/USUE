@@ -30,7 +30,7 @@ print('2077')
 print(2.077)
 ```
 ### Результат.
-![Меню](https://github.com/vnika2003/Software_Engineering/blob/Тема_2/pic/Lab2_1.png)
+![Меню](https://github.com/G2PDidu/USUE/blob/Tema_2/pictures/1.png)
 
 ## Выводы
 
