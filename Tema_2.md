@@ -51,7 +51,7 @@ print(6.1 - 1.7)
 print(9 - 1.1 + 3 - 2.12)
 ```
 ### Результат.
-![Меню](https://github.com/G2PDidu/USUE/blob/Tema_2/pictures/2.png)
+![Меню](pictures/2.png)
 
 ## Выводы
 
