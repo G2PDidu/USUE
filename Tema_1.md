@@ -1,72 +1,72 @@
 # Тема 1. Работа с Git
 Отчет по Теме #1 выполнил(а):
-- Деревянкин Владислав Владимирович
-- ОЗИВТ-23-2-у
+- ДАртюшин Вадим Борисович
+- ЗИВТ(ППК)-22-2-у
   
 
 Работу проверили:
 к.э.н., доцент Панов М.А.
 
 ## 2.1. Установка
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/dedc91d9-da8e-4061-9b58-97e1fdf5a2c9)
+![image](pictures/1.jpg)
 
 ## 2.2. Настройка
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/5ba154b6-49cd-443c-93bd-1c727bc57468)
+![image](pictures/2.png)
 
 
 ## 2.3. Создание нового репозитория
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/9adebb2b-b26a-49bb-9825-572ab62ed41c)
+![image](pictures/3.png)
 
 
 ## 2.4. Подготовка файлов
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/cce0421d-c790-4c07-9f46-d0ba40b20623)
+![image](pictures/4.png)
 
 
 
 ## 2.5. Фиксация изменений
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/0ccfa2e7-4f92-4daf-8629-467f1f7006f0)
+![image](pictures/5.png)
 
 
 ## 2.6. Подключение к удаленному репозиторию
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/1de4fdb8-90eb-4d88-b665-996e178e7a07)
+![image](pictures/6.png)
 
 
 ## 2.7. Ветвление
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/b35d41fa-c7e5-47b6-8ebb-cbbc57da4516)
+![image](pictures/7.png)
 
 
 ## 2.8. Особенности применения «Фетч»
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/a5298824-ce3f-4fd8-86fc-113cd330b5b9)
+![image](pictures/8.png)
 
 
 
 ## 2.9. Удаление файлов, веток, локальных и удалённых репозиториев
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/2cb4d35c-a546-49d9-9f18-3a990a69551d)
+![image](pictures/9.png)
 
 
 ## 2.10. Отслеживание изменений в коммитах
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/41908df4-db6e-4163-b980-9d0b3e6dd1dc)
+![image](pictures/10.png)
 
 
 
 ## 2.11. Возвращение файла к предыдущему (определенному) состоянию
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/69af6e25-13a8-42f0-ac0f-4ed176234004)
+![image](pictures/11.png)
 
 
 
 ## 2.12. Возвращение к предыдущему коммиту
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/bc65e3bd-f6cd-41ff-b860-a467f0941d30)
+![image](pictures/12.png)
 
 ## 2.13. Исправление коммита
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/bfcb48d7-d76d-4cb2-871d-4df449d78852)
+![image](pictures/13.png)
 
 
 ## 2.14. Разрешение конфликтов при слиянии
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/fc874af9-af71-433b-a6dc-98ad46a29c02)
+![image](pictures/14.png)
 
 
 ## 2.15. Настройка .gitignore
-![image](https://github.com/che3ZzOfficial/Program_engineering/assets/122799788/00a61539-09e3-43a6-96c8-60b0b05691a7)
+![image](pictures/15.png)
 
 
 Общий вывод:
