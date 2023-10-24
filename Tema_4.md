@@ -22,7 +22,7 @@
 - к.э.н., доцент Панов М.А.
 
 ## Лабораторная работа №1
-### Создайте две переменные, значение которых будете вводить через консоль. Также составьте условие, в котором созданные ранее переменные будут сравниваться, если условие выполняется, то выведете в консоль «Выполняется», если нет, то «Не выполняется».
+### Напишите функцию, которая выполняет любые арифметические действия и выводит результат в консоль. Вызовите функцию используя “точку входа”.
 
 ```python
 def main():
@@ -45,13 +45,13 @@ if __name__ == '__main__':
 ### Напишите программу, которая будет определять значения переменной меньше 0, больше 0 и меньше 10 или больше 10. Это нужно реализовать при помощи одной переменной, значение которой будет вводится через консоль, а также при помощи конструкций if, elif, else.
 
 ```python
-ft = int(input('Введите переменую: '))
-if ft < 0:
-    print('Переменная меньше 0')
-elif 0 < ft < 10:
-    print('Переменная больше 0 и меньше 10')
-else:
-    print('Переменная больше 10')
+def main():
+    result = 2+2
+    return result
+
+if __name__ == '__main__':
+    answer = main()
+    print(answer)
 ```
 ### Результат.
 ![Меню](lab/pics/l2.png)
@@ -70,12 +70,12 @@ else:
 ### Напишите программу, в которой будет проверяться есть ли переменная в указанном массиве используя логический оператор in. Самостоятельно посмотрите, как работает программа со значениями которых нет в массиве numbers.
 
 ```python
-numbers = [1, 3, 5, 7, 9]
-value = int(input('Введите переменную: '))
-if value in numbers:
-    print('Переменная есть в данном массиве')
-else:
-    print('Переменной нет в этом массиве')
+def main(one, two):
+    return one + two
+
+for i in range(5):
+    answer = main(one=1, two=10)
+    print(answer)
 ```
 ### Результат.
 ![Меню](lab/pics/l3.png)
@@ -92,15 +92,17 @@ else:
 ### Напишите программу, которая будет определять находится ли переменная в указанном массиве и если да, то проверьте четная она или нет. Самостоятельно протестируйте данную программу с разными значениями переменной value.
 
 ```python
-numbers = [1, 3, 5, 7, 9, 12, 15, 18, 27, 317]
-value = int(input('Введите переменную: '))
-if value in numbers:
-    if value % 2 == 0:
-        print('Переменная четная и есть в массиве numbers')
-    else:
-        print('Переменная нечетная и есть в массиве numbers')
-else:
-    print(f"Переменной нет в массиве numbers и она равна {value}")
+def main(x, *args):
+    one = x
+    two = sum(args)
+    three = float(len(args))
+    print(f"one={one}\ntwo={two}\nthree={three}")
+
+    return x + sum(args) / float(len(args))
+
+if __name__ == '__main__':
+    result = main(10, 0, 1, 2, -1, 0, -1, 1, 2)
+    print(f"\nresult={result}")
 ```
 ### Результат.
 ![Меню](lab/pics/l4.png)
@@ -119,18 +121,19 @@ else:
 ### Напишите программу, в которой циклом for значения переменной i будут меняться от 0 до 10 и посмотрите, как разные виды сравнений и операций работают в цикле.
 
 ```python
-for i in range(10):
-    print('i = ', i)
-    if i == 0:
-        i += 2
-    if i == 1:
-        continue
-    if i == 2 or i == 3:
-        print('Переменная равна 2 или 3')
-    elif i in [4, 5, 6]:
-        print('Переменная равна 4, 5 или 6')
-    else:
-        break
+def main(**kwargs):
+    for i in kwargs.items():
+        print(i[0], i[1])
+
+    print()
+
+    for key in kwargs:
+        print(f"{key} = {kwargs[key]}")
+
+if __name__ == '__main__':
+    main(x=[1, 2, 3], y=[3, 3, 0], z=[2, 3, 0], w=[3, 3, 0])
+    print()
+    main(**{'x': [1, 2, 3], 'y': [3, 3, 0]})
 ```
 ### Результат.
 ![Меню](lab/pics/l5.png)
@@ -149,15 +152,15 @@ for i in range(10):
 ### Напишите программу, в которой при помощи цикла for определяется есть ли переменная value в строке string и посмотрите, как работает оператор else для циклов. Самостоятельно посмотрите, что выведет программа, если значение переменной value оказалось в строке string. Определять индекс буквы не обязательно, но если вы хотите, то это делается при помощи строки: index = string.find(value) Вы берете название переменной, в которой вы хотите что-то найти, затем применяете встроенный метод find() и в нем указываете то, что вам нужно найти. Данная строка вернет индекс искомого объекта.
 
 ```python
-string = 'Лабораторная работа номер 3'
-value = input('Ввведите букву которую хотите найти: ')
-for i in string:
-    if i == value:
-        index = string.find(value)
-        print(f"Буква '{value}' есть в строке под {index} индексом")
-        break
-    else:
-        print(f"Буквы '{value}' нет в указанной строке")
+def main(**kwargs):
+    for i, j in kwargs.items():
+        print(f"{i}. Mean = {mean(j)}")
+
+def mean(data):
+    return sum(data) / float(len(data))
+
+if __name__ == '__main__':
+    main(x=[1, 2, 3], y=[3, 3, 0])
 ```
 ### Результат.
 ![Меню](lab/pics/l6.png)
@@ -174,10 +177,14 @@ for i in string:
 ### Напишите программу, в которой вы наглядно посмотрите, как работает цикл for проходя в обратном порядке, то есть, к примеру не от 0 до 10, а от 10 до 0. В уже готовой программе показано вычитание из 100, а вам во время реализации программы будет необходимо придумать свой вариант применения обратного цикла.
 
 ```python
-value = 100
-for i in range(10, -1, -1):
-    value -= i
-    print(i, value)
+def say_hello():
+    print('Hello world')
+```
+```python
+from l7 import say_hello
+
+if __name__ == '__main__':
+    say_hello()
 ```
 ### Результат.
 ![Меню](lab/pics/l7.png)
@@ -192,15 +199,16 @@ for i in range(10, -1, -1):
 ### Напишите программу используя цикл while, внутри которого есть какие-либо проверки, но быть осторожным, поскольку циклы while при неправильно написанных условиях могут становится бесконечными, как указано в примере далее.
 
 ```python
-value = 0
-while value < 100:
-    if value == 0:
-        value += 10
-    elif value // 5 > 1:
-        value *= 5
-    else:
-        value -= 5
-    print(value)
+from math import *
+
+def main():
+    value = int(input('Введите значение: '))
+    print(sqrt(value))
+    print(sin(value))
+    print(cos(value))
+
+if __name__ == '__main__':
+    main()
 ```
 ### Результат.
 ![Меню](lab/pics/l8.png)
@@ -215,14 +223,24 @@ while value < 100:
 ### Напишите программу с использованием вложенных циклов и одной проверкой внутри них. Самое главное, не забудьте, что нельзя использовать одинаковые имена итерируемых переменных, когда вы используете вложенные циклы.
 
 ```python
-value = 0
-for i in range(10):
-    for j in range(10):
-        if i != j:
-            value += j
-        else:
-            pass
-print(value)
+from datetime import datetime as dt
+from datetime import timedelta as td
+
+def main():
+    print(
+        f"Сегодня {dt.today().date()}. "
+        f"День недели - {dt.today().isoweekday()}"
+    )
+    n = int(input('Введите количество дней: '))
+    today = dt.today()
+    result = today + td(days=n)
+    print(
+        f"Через {n} дней будет {result.date()}. "
+        f"День недели - {result.isoweekday()}"
+    )
+
+if __name__ == '__main__':
+    main()
 ```
 ### Результат.
 ![Меню](lab/pics/l9.png)
@@ -237,15 +255,26 @@ print(value)
 ### Напишите программу с использованием flag, которое будет определять есть ли нечетное число в массиве. В данной задаче flag выступает в роли индикатора встречи нечетного числа в исходном массиве, четных чисел.
 
 ```python
-even_array = [2, 4, 6, 8, 9]
-flag = False
-for value in even_array:
-    if value % 2 == 1:
-        flag = True
-if flag is True:
-    print('В массиве есть нечетное число')
-else:
-    print('В массиве все числа четные')
+def rectangle():
+    a = float(input("Ширина: "))
+    b = float(input("Высота: "))
+    global result
+    result = a * b
+
+def triangle():
+    a = float(input("Основание: "))
+    h = float(input("Высота: "))
+    global result
+    result = 0.5 * a * h
+
+figure = input("1-прямоугольник, 2-треугольник: ")
+
+if figure == '1':
+    rectangle()
+elif figure == '2':
+    triangle()
+
+print(f"Площадь: {result}")
 ```
 ### Результат.
 ![Меню](lab/pics/l10.png)
@@ -266,10 +295,23 @@ else:
 Никаких других действий или циклов использовать нельзя.
 
 ```python
-for x in range(7):
-    x *= 5
-    x += 1
-print(x)
+import math; #Подключаем модуль math
+from datetime import datetime #Подключаем модуль datetime из библиотеки datetime
+def main(args): #Функция main принимает один аргумент args, который будет содержать координаты точек.
+    for i in args: #В цикле перебираем все координаты из списка args.
+        x, y = i[0], i[1] #Разделяем координаты точки на x и y с помощью индексации.
+        distance = math.sqrt((x ** 2) + (y ** 2)) #Вычисляем расстояние до каждой точки с помощью формулы расстояния в декартовых координатах и функции sqrt из математического модуля.
+        print(f'Расстояние между началом координат и точкой {x}, {y} составляет: {distance}') #Выводим расстояние на экран.
+if __name__ == "__main__":
+    args = [
+        [10, 3],
+        [5, 4],
+        [15, 13],
+        [93, 53],
+        [133, 15]]
+    start_time = datetime.now() #Запоминаем текущее время в переменной start_time перед началом вычислений.
+    main(args) #Вызываем функцию main с аргументом args – списком координат точек
+    print('--- %s секунд ---' % (datetime.now() - start_time)) #Выводим на экран, сколько времени заняло выполнение программы
 ```
 ### Результат.
 ![Меню](sam/s1.jpg)
@@ -284,7 +326,20 @@ print(x)
 ### Напишите программу, которая фразу «Hello World» выводит в обратном порядке, и каждая буква находится в одной строке консоли. При этом необходимо обязательно использовать любой цикл, а также программа должна занимать не более 3 строк в редакторе кода.
 
 ```python
-for c in "Hello World"[::-1]: print(c)
+import random
+
+def dice_roll():
+    roll = random.randint(1, 6)
+    print("Кубик выпал на:", roll)
+
+    if roll in [5, 6]:
+        print("Вы выиграли!")
+    elif roll in [3, 4]:
+        dice_roll()
+    else:
+        print("Попробуйте еще раз…")
+
+dice_roll()
 ```
 ### Результат.
 ![Меню](sam/s2.png)
@@ -303,15 +358,19 @@ for c in "Hello World"[::-1]: print(c)
 Результатом работы программы будет выведенный в консоль диапазон. Программа должна занимать не более 10 строчек в редакторе кода.
 
 ```python
-def check_range(number):
-    if number >= 0 and number <= 3:
-        return "Число принадлежит диапазону 0–3"
-    elif number > 3 and number <= 6:
-        return "Число принадлежит диапазону 4–6"
-    else:
-        return "Число принадлежит диапазону 7–10"
-number = int(input('Введите число: '))
-print(check_range(number))
+import time
+import datetime
+
+def get_time():
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+start = time.time()
+for _ in range(5):
+    current_time = get_time()
+    print(current_time)
+    time.sleep(1)
+    elapsed_time = time.time() - start
+print("Программа выполнялась", elapsed_time, "секунд")
 ```
 ### Результат.
 ![Меню](sam/s3.png)
@@ -332,19 +391,16 @@ print(check_range(number))
 Проверьте работу программы минимум на 3 предложениях, чтобы охватить проверку всех поставленных условий.
 
 ```python
-predloj = input("Введите предложение: ")
-dlina = len(predloj)
-lowwer = predloj.lower()
+def mean(*args):
+   try:
+      return sum(args) / len(args)
+   except ZeroDivisionError:
+      return 'Error'
 
-def main():
-    masss = lowwer.count('a') + lowwer.count('e') + lowwer.count('i') + lowwer.count('o') + lowwer.count('u')
-    skip = lowwer.replace('ugly', 'beauty')
-    TheEnd = (lowwer[0] == 't' and lowwer[-1] == 'e')
-
-print("Результаты")
-print("↓↓↓↓↓↓↓↓↓↓")
-print(f"Длина предложения:  {dlina}")
-print(f"Предложение в нижнем регистре:  {lowwer}")
+# Test code
+if __name__ == "__main__":
+   print(mean(1, 2, 3))
+   print(mean())
 ```
 ### Результат.
 ![Меню](sam/s4.1.png)
@@ -362,17 +418,29 @@ print(f"Предложение в нижнем регистре:  {lowwer}")
 ### Программу нужно составить из данных фрагментов кода.
 
 ```python
-string = 'hello'
-values = [0, 2, 4, 6, 8, 10]
-counter = 0
-while ' world' not in string:
-    memory = string
-    if counter in values:
-        string = string + ' world'
-    print(string)
-    if counter < 10:
-        string = memory
-    counter += 1
+import math
+
+def s5_1(a, b, c):
+    s = (a + b + c) / 2
+    return math.sqrt(s * (s - a) * (s - b) * (s - c))
+    a = int(input("Введите длину стороны a: "))
+    b = int(input("Введите длину стороны b: "))
+    c = int(input("Введите длину стороны c: "))
+
+    area = heron_area(a, b, c)
+
+print("Площадь треугольника:", s5_1)
+```
+```python
+from s5_1 import s5_1
+
+a = float(input("Введите длину стороны a: "))
+b = float(input("Введите длину сторону b: "))
+c = float(input("Введите длину стороне c: "))
+
+area = s5_1(a, b, c)
+
+print("Площадь треугольника: ", area)
 ```
 ### Результат.
 ![Меню](sam/s5.png)
