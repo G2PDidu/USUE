@@ -22,20 +22,25 @@
 - к.э.н., доцент Панов М.А.
 
 ## Лабораторная работа №1
-### Друзья предложили вам поиграть в игру "найди отличия и убери повторения (версия для программистов)". Суть игры состоит в том, что на вход программы поступает два множества, а ваша задача вывести все элементы первого, которых нет во втором. А вы как раз недавно прошли множества и знаете их возможности, поэтому это не составит для вас труда.
+###  В школе, где вы учились, узнали, что вы крутой программист и попросили написать программу для учителей, которая будет при вводе кабинета писать для него ключ доступа и статус, занят кабинет или нет. При написании программы необходимо использовать словарь (dict), который на вход получает номер кабинета, а выводит необходимую информацию. Если кабинета, который вы ввели нет в словаре, то в консоль в виде значения ключа нужно вывести "None" и виде статуса вывести "False". По большому счету написав данную программу мы с вами научились заменять иногда громоздкую конструкцию if/elif/else. Поскольку здесь функционал словаря полностью повторяет функционал условия, но при этому использования словарей в более сложных программах есть намного больше возможностей реализации.   
 
 ```python
-set_1 = {'White', 'Black', 'Red', 'Pink'}
-set_2 = {'Red', 'Green', 'Blue', 'Red'}
-print('1', set_1 - set_2)
+request = int(input('Введите номер кабинета: '))
 
-set_1 = {'White', 'Black', 'Red', 'Pink', 'Black', 'White'}
-set_2 = {'Red', 'Green', 'Blue', 'Red'}
-print('2', set_1 - set_2)
+dictionary = {
+    101: {'key': 1234, 'access': True},
+    102: {'key': 1337, 'access': True},
+    103: {'key': 8943, 'access': True},
+    104: {'key': 5555, 'access': True},
+    None: {'key': None, 'access': False},
+}
 
-set_1 = {'White', 'Black', 'Red', 'Pink', 'Red', 'Red'}
-set_2 = {'Red', 'Green', 'Blue', 'Red'}
-print('3', set_1 - set_2)
+response = dictionary.get(request)
+if not response:
+    response = dictionary[None]
+key = response.get('key')
+access = response.get('access')
+print(key, access)
 ```
 ### Результат.
 ![Меню](lab/pics/1.png)
@@ -52,11 +57,16 @@ print('3', set_1 - set_2)
 ### Напишите две одинаковые программы, только одна будет использовать set(), а вторая frozenset() и попробуйте к исходному множеству добавить несколько элементов, например, через цикл.
 
 ```python
-a = set('abcdefg')
-print(a)
-for i in range(1, 5):
-    a.add(i)
-print(a)
+from pprint import pprint
+
+my_dict = {'first': 'so easy'}
+
+def dict_maker(**kwargs):
+    my_dict.update(**kwargs)
+
+dict_maker(a1=1, a2=20, a3=54, a4=13)
+dict_maker(name='Вадим', age=22, weight=92, eyes_color='green')
+pprint(my_dict)
 ```
 ### Результат.
 ![Меню]lab/pics/2.png)
@@ -72,15 +82,10 @@ print(a)
 ### Напишите программу, в которой будет проверяться есть ли переменная в указанном массиве используя логический оператор in. Самостоятельно посмотрите, как работает программа со значениями которых нет в массиве numbers.
 
 ```python
-def replace(input_list):
-    memory = input_list[0]
-    input_list[0] = input_list [-1]
-    input_list[-1] = memory
-
-    return input_list
-
-
-print(replace([1, 2, 3, 4, 5]))
+input_string = 'HelloWorld'
+result = tuple(input_string)
+print(result)
+print(list(result))
 ```
 ### Результат.
 ![Меню](lab/pics/3.png)
@@ -96,8 +101,14 @@ print(replace([1, 2, 3, 4, 5]))
 ### Напишите программу, которая будет определять находится ли переменная в указанном массиве и если да, то проверьте четная она или нет. Самостоятельно протестируйте данную программу с разными значениями переменной value.
 
 ```python
-a = [12, 54, 32, 57, 843, 2346, 765, 75, 25, 234, 756, 23]
-print(a[2:6])
+def personal_info(name, age, company='unnamed'):
+    print(f"Имя: {name} Возраст: {age} Компания: {company}")
+
+tom = ("Григорий", 22)
+personal_info(*tom)
+
+bob = ("Григорий", 41, "Yandex")
+personal_info(*bob)
 ```
 ### Результат.
 ![Меню](lab/pics/4.png)
@@ -113,13 +124,15 @@ print(a[2:6])
 ### Напишите программу, в которой циклом for значения переменной i будут меняться от 0 до 10 и посмотрите, как разные виды сравнений и операций работают в цикле.
 
 ```python
-def useless(lst):
-    return max(lst) / len(lst)
+def tuple_sort(tpl):
+    for elm in tpl:
+        if not isinstance(elm, int):
+            return tpl
+    return tuple(sorted(tpl))
 
-
-print(useless([3, 5, 7, 3, 33]))
-print(useless([-12.5, 54, 77.3, 0, -36, 98.2, -63, 21.7, 47, -89.6]))
-print(useless([-25.8, 86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]))
+if __name__ == '__main__':
+    print(tuple_sort((5, 5, 3, 1, 9)))
+    print(tuple_sort((5, 5, 2.1, '1', 9)))
 ```
 ### Результат.
 ![Меню](lab/pics/5.png)
@@ -147,26 +160,12 @@ print(useless([-25.8, 86, 12.5, -56, 73.2, 0, 43, -91.5, 65.9, -7]))
 Результатом выполнения задачи будет: листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
 
 ```python
-def read_checks(check_list):
-    counts = {}
-    for check in check_list:
-        if counts.get(check) is None:
-            counts[check] = 1
-    else:
-        counts[check] += 1
-    return counts
+user_input = input("Введите числа через пробел: ")
+numbers_list = user_input.split()  # преобразуем строку в список
+numbers_tuple = tuple(numbers_list)  # преобразуем список в кортеж
 
-
-check_list = [8734, 2345, 8201, 6621, 9999, 1234, 5678, 8201, 8888, 4321, 3365, 1478, 9865, 5555, 7777, 9998]
-counts = read_checks(check_list)
-print("Выдано чеков:", len(counts))
-print("Разных людей:", len(counts.keys()))
-max_count = 0
-max_check = None
-for check, count in counts.items():
-    if count > max_count:
-        max_count = count
-        max_check = check
+print(f"Список: {numbers_list}")
+print(f"Кортеж: {numbers_tuple}")
 ```
 ### Результат.
 ![Меню](sam/pics/1.png)
@@ -189,16 +188,23 @@ for check, count in counts.items():
 Результатом выполнения задачи будет: листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
 
 ```python
-results = [10.2, 14.8, 19.3, 22.7, 12.5, 33.1, 38.9, 21.6, 26.4, 17.1, 30.2, 35.7, 16.9, 27.8, 24.5, 16.3, 18.7, 31.9, 12.9, 37.4]
+def remove_first_occurrence(tuple, element):
+    try:
+        tuple = tuple[:tuple.index(element)] + tuple[tuple.index(element) + 1:]
+    except ValueError:
+        pass
+    return tuple
 
-bestThree = sorted(results)[-3:]
-worstThree = sorted(results, reverse=True)[-3:]
 
-results10AndAbove = [x for x in results if x >= 10]
+test_cases = [
+    ((1, 2, 3), 1),
+    ((1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3),
+    ((2, 4, 6, 6, 4, 2), 9),
+]
 
-print("Три лучшие результаты:", bestThree)
-print("Три худшие результаты:", worstThree)
-print("Все результаты от 10:", results10AndAbove)
+for tuple, element in test_cases:
+    modified_tuple = remove_first_occurrence(tuple, element)
+    print(f"{tuple=}, modified: {modified_tuple}")
 ```
 ### Результат.
 ![Меню](sam/pics/2.png)
@@ -219,21 +225,20 @@ two = [5, 18, 40, 62, 98]
 three = [4, 21, 37, 56, 84]
 
 ```python
-one = [12, 25, 3, 48, 71]
-two = [5, 18, 40, 62, 98]
-three = [4, 21, 37, 56, 84]
+def most_frequent_digits(numbers_string):
+  digits_count = {}
+  for digit in numbers_string:
+    if digit in '0123456789':
+      if digit in digits_count:
+        digits_count[digit] += 1
+      else:
+        digits_count[digit] = 1
+  sorted_count = {k: v for k, v in sorted(digits_count.items(), key = lambda x: x)}
+  return sorted_count
 
-one_max = max(one)
-two_max = two.index(max(two))
-three_max = three.index(max(three))
-
-one_min = min(one)
-two_min = two.index(min(two))
-three_min = three.index(min(three))
-
-max_area = (one_max + two_max - three_max) ** 0.5
-min_area = (one_min + two_min - three_min) ** 0.5
-print(f"Максимальная площадь: {max_area}\nМинимальная площадь: {min_area}")
+# Test the function
+input_number_string = '123321'
+print(most_frequent_digits(input_number_string))
 ```
 ### Результат.
 ![Меню](sam/pics/3.png)
@@ -257,30 +262,20 @@ print(f"Максимальная площадь: {max_area}\nМинимальн�
 консоль, в котором будут три обновленных массива.
 
 ```python
-def update_grades(grades):
-    updated_grades = []
-    for grade in grades:
-        if grade == 2:
-            updated_grades.append(1)
-        elif grade == 3:
-            updated_grades.append(4)
-        else:
-            updated_grades.append(grade)
-    return updated_grades
-
-grades_1 = [2,3,4,5,3,4,5,2,2,5,3,4,3,5,4]
-grades_2 = [4,2,3,5,3,5,4,2,2,5,4,3,5,3,4]
-grades_3 = [5,4,3,3,4,3,3,5,5,3,3,3,3,4,4]
-
-updated_grades_1 = update_grades(grades_1)
-updated_grades_2 = update_grades(grades_2)
-updated_grades_3 = update_grades(grades_3)
-
-print("Обновленный массив 1:", updated_grades_1)
-print("Обновленный массив 2:", updated_grades_2)
-print("Обновленный массив 3:", updated_grades_3)
-
-
+def entry_exit_seq(employee_id, seq):
+	employee_found = False
+	output = []
+	for item in seq:
+		if item == employee_id and not employee_found:
+			employee_found = True
+		elif item == employee_id and employee_found:
+			break
+		else:
+			output.append(item)
+	return output
+print(entry_exit_seq(8, (1,2,3))) # [8]
+print(entry_exit_seq(8, (1,8,3,4,8,8,9,2))) # [8,8,8]
+print(entry_exit_seq(8, (1,2,8,5,1,2,9))) # [8,1,2]
 ```
 ### Результат.
 ![Меню](sam/pics/4.png)
@@ -307,22 +302,18 @@ c set()):
 {11', 1, 3, 2, 5, 6, '222222', '222', 7, '2222', '22222', '22},
 
 ```python
-list_1 = [1, 1, 3, 3, 1]
-list_2 = [5, 5, 5, 5, 5, 5, 5]
-list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2]
+def max_element(numbers):
+    return max(numbers)
 
-def convert_to_string(number):
-    s = str(number)
-    if s.isnumeric() and int(s) == number:
-        return s + s[:2]
-    return s
+tests = [
+    ([2, 3, 4], 4),
+    ([5, 6], 6),
+    ([7, 8, 9], 9),
+]
 
-def create_set(lst):
-    return {convert_to_string(item) for item in lst}
-
-print(create_set(list_1))
-print(create_set(list_2))
-print(create_set(list_3))
+for numbers, expected_max in tests:
+    actual_max = max_element(numbers)
+    print(f"Для списка {numbers} максимальный элемент равен {actual_max}, что совпадает с ожидаемым значением {expected_max}")
 ```
 ### Результат.
 ![Меню](sam/pics/5.png)
