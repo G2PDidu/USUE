@@ -237,7 +237,7 @@ if __name__ == "__main__":
     main()
 ```
 ### Результат.
-![Меню](sam/pics/1.png)
+![Меню](sam/pic/s1.png)
 
 ## Выводы
 
@@ -289,7 +289,7 @@ if __name__ == "__main__":
     main()
 ```
 ### Результат.
-![Меню](sam/pics/2.png)
+![Меню](sam/pic/s2.png)
 
 ## Выводы
 
@@ -326,7 +326,7 @@ if __name__ == '__main__':
     main()
 ```
 ### Результат.
-![Меню](sam/pics/3.png)
+![Меню](sam/pic/s3.png)
 
 ## Выводы
 
@@ -359,7 +359,7 @@ def censore(sentence):
 print(censore(input())) #выводим предложение с замененными словами
 ```
 ### Результат.
-![Меню](sam/pics/4.png)
+![Меню](sam/pic/s4.png)
 
 ## Выводы
 
@@ -380,7 +380,7 @@ print("В файле", characters, "символов.")
 file.close()
 ```
 ### Результат.
-![Меню](sam/pics/5.png)
+![Меню](sam/pic/s5.png)
   
 ## Выводы
 
