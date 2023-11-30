@@ -44,9 +44,16 @@ my_car = Car("Toyota", "Trueno") #Создаем экземпляр класса
 ### Напишите программу, которая выведет только первую строку из вашего файла, при этом используйте конструкцию open()/close().
 
 ```python
-f = open('input.txt', 'r')
-print(f.readline())
-f.close()
+class Car: # Класс для представления автомобиля
+    def __init__(self, make, model): # Метод инициализации автомобиля с параметрами: марка и модель
+        self.make = make # Свойство класса для хранения марки
+        self.model = model # Свойство класса для хранения модели
+
+    def drive(self): # Метод для управления автомобилем
+        print(f"Driving the {self.make} {self.model}") # Вывод информации о марке и модели
+
+my_car = Car("Toyota", "Trueno") # Создание экземпляра класса Car с определенными параметрами
+my_car.drive() # Управление созданным экземпляром
 ```
 ### Результат.
 ![Меню](Lab/pic/l2.png)
@@ -61,9 +68,22 @@ f.close()
 ### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию open()/close().
 
 ```python
-f = open('input.txt', 'r')
-print(f.readlines())
-f.close()
+class Car: #Он определяет основные характеристики автомобиля, такие как марка и модель. Также он имеет метод drive(), который выводит на экран сообщение о том, что автомобиль едет.
+    def __init__(self, make, model): #Это конструктор класса. Он инициализирует атрибуты make и model для каждого экземпляра класса.
+        self.make = make #Эта строка устанавливает атрибут make для экземпляра класса.
+        self.model = model #Эта строка делает то же самое для атрибута model.
+    def drive(self): #Данный метод имитирует процесс вождения автомобиля.
+        print(f"Driving the {self.make} {self.model}") #Эта строка выводит информацию о марке и модели автомобиля на экран.
+my_car = Car("Toyota", "Trueno") #Здесь создается экземпляр класса Car с маркой Toyota и моделью Trueno.
+my_car.drive() #Вызов метода drive() для экземпляра my_car имитирует процесс управления автомобилем.
+class ElectricCar(Car): #Этот класс наследует все методы и атрибуты от класса Car и добавляет новые.
+    def __init__(self, make, model, battery_capacity): #Конструктор этого класса принимает дополнительные параметры: емкость аккумулятора.
+        super().__init__(make, model) #Вызывается конструктор родительского класса для инициализации атрибутов make и model.
+        self.battery_capacity = battery_capacity #Атрибут battery_capacity присваивается экземпляру класса.
+    def charge(self): #имитирует зарядку аккумулятора.
+        print(f"Charging the {self.make} {self.model} with {self.battery_capacity}  kWh") #Вывод информации о процессе зарядки на экран.
+my_electric_car = ElectricCar("Telsa", "Model S", 75) #Создание экземпляра класса ElectricCar с маркой Telsa, моделью Model S и емкостью аккумулятора 75 kWh.
+my_electric_car.drive() #
 ```
 ### Результат.
 ![Меню](Lab/pic/l3.png)
@@ -78,8 +98,19 @@ f.close()
 ## Лабораторная работа №4
 ### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию with open().
 ```python
-with open('input.txt') as f:
-	print(f.readlines())
+class Car: #Эта строка описывает класс с именем Car. Внутри фигурных скобок содержатся определения методов и переменных, которые принадлежат этому классу.
+    def __init__(self, make, model): #Это конструктор класса, который инициализирует его атрибуты. В данном случае он принимает два аргумента: make (марка автомобиля) и model (модель автомобиля).
+        self.make = make #Атрибут self.make устанавливается равным аргументу make.
+        self.model = model #То же самое происходит с атрибутом model и его аргументом model.
+
+    def drive(self): #Это метод, который “имитирует” вождение автомобиля. Он просто выводит сообщение на экран.
+        print(f"Driving the {self.make} {self.model}") #Эта строка выводит на экран информацию о марке и модели автомобиля.
+
+my_car = Car("Toyota", "Trueno") #Здесь создается экземпляр класса Car, который представляет автомобиль марки “Toyota” модели “Trueno”.
+
+
+print(my_car.make) #Эта строка выводит марку автомобиля, который был создан выше.
+my_car.drive() #Вызов метода drive() на Aэкземпляре my_car “имитирует” процесс вождения автомобиля.
 ```
 ### Результат.
 ![Меню](Lab/pic/l4.png)
@@ -94,9 +125,27 @@ with open('input.txt') as f:
 ### Напишите программу, которая выведет каждую строку из вашего файла отдельно, при этом используйте конструкцию with open().
 
 ```python
-with open('input.txt') as f:
-	for line in f:
-		print(line)
+class Shape: #Определяется класс Shape.
+    def area(self): #Определяется метод area в классе Shape. Пока он не имеет реализации и просто использует оператор pass.
+        pass #Заканчивается определение класса Shape.
+class Rectangle(Shape): #Создаем класс Rectangle, который наследуется от класса Shape
+    def __init__(self, width, height): #Определяем конструктор класса, который принимает параметры width и height
+        self.width = width #
+        self.height = height #Инициализируем атрибуты width и height с помощью переданных значений
+
+    def area(self): #Определяем метод area, который возвращает площадь прямоугольника, вычисленную как произведение ширины и высоты
+        return self.width * self.height #
+
+class Circle(Shape): #Определяется класс Circle, который наследуется от класса Shape.
+    def __init__(self, radius): #Определяется метод инициализации (__init__) в классе Circle. Он принимает один параметр - radius (радиус).
+        self.radius = radius #В методе инициализации класса Circle устанавливается значение атрибута radius на основе переданного параметра.
+
+    def area(self): #Определяется метод area для класса Circle, который переопределяет метод area из класса Shape.
+        return 3.14 * self.radius * self.radius #В методе area класса Circle вычисляется и возвращается площадь круга, умножая квадрат радиуса на число Pi (3.14).
+
+shapes = [Rectangle(4, 5), Circle(3)] #Создается список shapes, который содержит два элемента: объекты классов Rectangle и Circle, созданные с определенными параметрами.
+for shape in shapes: #Выполняется цикл, который проходит по каждому элементу списка shapes.
+    print(shape.area()) #Выводится площадь текущей фигуры (shape) с помощью вызова метода area() для текущего объекта.
 ```
 ### Результат.
 ![Меню](Lab/pic/l5.png)
@@ -106,20 +155,17 @@ with open('input.txt') as f:
 самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоле в котором будет указана вся необходимая информация.
 
 ```python
-def main():
-    with open("words.txt", encoding="utf8") as file:
-        text = file.read()
-        words = text.split()
-        word_count = {word: words.count(word) for word in set(words)}
-        max_count = max(word_count, key=word_count.get)
+class CPU:
+    def __init__(self, Brand, Models, Cores, Threads):
+        self.Brand = Brand
+        self.Models = Models
+        self.Cores = Cores
+        self.Threads = Threads
 
-    print(f"Самое частое слово: {max_count}, количество: {word_count[max_count]}")
-
-if __name__ == "__main__":
-    main()
+my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
 ```
 ### Результат.
-![Меню](sam/pic/s1.png)
+![Меню](Sam/pic/s1.png)
 
 ## Выводы
 
@@ -134,44 +180,21 @@ if __name__ == "__main__":
 выполнения задачи будет: скриншот файла с учетом расходов, листинг кода, и вывод в консоль, с демонстрацией работоспособности программы.
 
 ```python
-def read_data():
-    try:
-        with open("transactions.txt", "r") as file:
-            data = file.read()
-            return data
-    except FileNotFoundError:
-        return "Нет данных для чтения!"
+class CPU:
+    def __init__(self, Brand, Models, Cores, Threads):
+        self.Brand = Brand
+        self.Models = Models
+        self.Cores = Cores
+        self.Threads = Threads
 
-def write_data(data):
-    try:
-        with open("transactions.txt", "w") as file:
-            file.write(data)
-    except PermissionError:
-        print("Ошибка разрешения! Пожалуйста, повторите попытку позже.")
+    def Test_CPU(self):
+        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
 
-def main():
-    data = read_data()
-    transactions = data.split("\n")
-    print("Текущие операции: ")
-    for transaction in transactions:
-        if transaction != "":
-            print(transaction)
-        else:
-            pass
-
-    while True:
-        amount = input("Введите сумму транзакции (Enter для выхода): ")
-        if amount == "":
-            break
-        transactions.append(amount)
-        write_data("\n".join(transactions))
-        print(f"Добавлена транзакция:  {amount}")
-
-if __name__ == "__main__":
-    main()
+my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
+my_CPU.Test_CPU()
 ```
 ### Результат.
-![Меню](sam/pic/s2.png)
+![Меню](Sam/pic/s2.png)
 
 ## Выводы
 
@@ -194,21 +217,35 @@ Input file contains:
 4 lines
 
 ```python
-def main():
-    filename = 'input.txt'
-    letters, words, lines = 0, 0, 0
-    with open(filename, 'r') as file:
-        for line in file:
-            letters += len(line)
-            words += len(line.split())
-            lines += 1
-    print(f'Input file contains:\n{letters} letters\n{words} words\n{lines} lines')
+class CPU:
+    def __init__(self, Brand, Models, Cores, Threads):
+        self.Brand = Brand
+        self.Models = Models
+        self.Cores = Cores
+        self.Threads = Threads
 
-if __name__ == '__main__':
-    main()
+    def Test_CPU(self):
+        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
+
+
+my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
+my_CPU.Test_CPU()
+
+
+class Intel_CPU(CPU):
+    def __init__(self, Brand, Models, Cores, Threads, TurboBoost):
+        super().__init__(Brand, Models, Cores, Threads)
+        self.TurboBoost = TurboBoost
+
+    def boost(self):
+        print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")
+
+al_CPU = Intel_CPU("Intel", "i7-8700", "6", "8", "2.0")
+al_CPU.Test_CPU()
+al_CPU.boost()
 ```
 ### Результат.
-![Меню](sam/pic/s3.png)
+![Меню](Sam/pic/s3.png)
 
 ## Выводы
 
@@ -233,15 +270,22 @@ PYTHON is awesome!!!!
 ****** **
 awesome!!!!
 ```python
-def censore(sentence):
-	words = open('input1.txt','r').read().lower().split() #открываем файл и записываем все слова в список
-	for word in words: #проходимся по всем словам в списке
-		sentence = sentence.replace(word, '*'*len(word)) #если слово встречается в предложении, то заменяем его
-	return sentence
-print(censore(input())) #выводим предложение с замененными словами
+class CPU:
+    def __init__(self, Brand, Models, Cores, Threads):
+        self._Brand = Brand
+        self.__Models = Models
+        self.___Cores = Cores
+        self.____Threads = Threads
+
+    def Test_CPU(self):
+        print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")
+
+my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
+print(my_CPU._Brand)
+my_CPU.Test_CPU()
 ```
 ### Результат.
-![Меню](sam/pic/s4.png)
+![Меню](Sam/pic/s4.png)
 
 ## Выводы
 
@@ -254,15 +298,32 @@ print(censore(input())) #выводим предложение с заменен
 ### Программу для подсчета символов в текстовом файле.
 
 ```python
-file = open("file.txt", "r")
-content = file.read()
+class Camera:
+    def take_picture(self):
+        print('фотографирую')
 
-characters = len(content)
-print("В файле", characters, "символов.")
-file.close()
+    def get_resolution(self):
+        print('разрешение недоступно')
+
+
+class Phone:
+    def call(self):
+        print('зовущий')
+
+    def charge(self):
+        print('зарядка')
+
+class CameraPhone(Camera, Phone):
+    pass
+
+camera_phone = CameraPhone()
+camera_phone.take_picture()
+camera_phone.get_resolution()
+camera_phone.call()
+camera_phone.charge()
 ```
 ### Результат.
-![Меню](sam/pic/s5.png)
+![Меню](Sam/pic/s5.png)
   
 ## Выводы
 
