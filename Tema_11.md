@@ -163,14 +163,15 @@ for shape in shapes: #Выполняется цикл, который прохо
 ### Самостоятельно создайте класс и его объект. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+        yield a
 
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
+# Пример использования
+for number in fib(200):
+    print(number)
 ```
 ### Результат.
 ![Меню](sam/pic/s1.png)
@@ -183,18 +184,26 @@ my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
 ### Самостоятельно создайте атрибуты и методы для ранее созданного класса. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+        yield a
 
-    def Test_CPU(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
+# Пример использования
+for number in fib(200):
+    print(number)
 
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-my_CPU.Test_CPU()
+def write_fibs_to_file(n):
+    file = open("fib.txt", "w")
+    a, b = 0, 1
+    for _ in range(n):
+        file.write(str(a) + "\n")
+        a, b = b, a + b
+    file.close()
+
+#Пример использования
+write_fibs_to_file(200)
 ```
 ### Результат.
 ![Меню](sam/pic/s2.1.png)
