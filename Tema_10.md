@@ -178,38 +178,65 @@ if __name__ == '__main__':
 ### Самостоятельно создайте класс и его объект. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
+import time
 
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
+def timing_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"\nФункция {func.__name__} выполнилась за {execution_time:.5f} секунд")
+        return result
+    return wrapper
+
+@timing_decorator
+def fibonacci():
+    fib1 = fib2 = 1
+    for i in range(2, 200):
+        fib1, fib2 = fib2, fib1 + fib2
+        print(fib2, end=' ')
+
+if __name__ == '__main__':
+    fibonacci()
 ```
 ### Результат.
 ![Меню](Sam/pic/s1.png)
 
 В данном коде выводятся одна строка с использованием функции `my_CPU`. Каждая строка содержит разные значения:
 
-1. `my_CPU = CPU("Amd", "Ryzen 7", "8", "16")`.
+1. `print(f"\nФункция {func.__name__} выполнилась за {execution_time:.5f} секунд")`: Выводится Функция fibonacci выполнилась за *** секунд.
 
 ## Самостоятельная работа №2
 ### Самостоятельно создайте атрибуты и методы для ранее созданного класса. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            data = file.read()
+            if not data:
+                raise Exception("Файл пустой")
+            else:
+                print("Информация из файла:")
+                print(data)
+    except FileNotFoundError:
+        print(f"Файл {file_path} не найден")
+    except Exception as e:
+        print(f"Ошибка: {e}")
 
-    def Test_CPU(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
 
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-my_CPU.Test_CPU()
+empty_file_path = "empty_file.txt"
+open(empty_file_path, 'w').close()
+
+non_empty_file_path = "non_empty_file.txt"
+with open(non_empty_file_path, 'w') as file:
+    file.write("Hello world.")
+
+print("\nПопытка чтения пустого файла:")
+read_file('empty_file.txt')
+print("\nПопытка чтения непустого файла:")
+read_file('non_empty_file.txt')
 ```
 ### Результат.
 ![Меню](Sam/pic/s2.png)
@@ -218,38 +245,27 @@ my_CPU.Test_CPU()
 
 В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")`: Выводится предложение. 
+1. `print("\nПопытка чтения пустого файла:")`: Выводится Попытка чтения пустого файла:.
+2. `print(f"Ошибка: {e}")`: Выводится Ошибка: Файл пустой.
+3. `print("\nПопытка чтения пустого файла:")`: Выводится Попытка чтения непустого файла:.
+4. `print("Информация из файла:")`: Выводится Информация из файла:.
+5. `print(data)`: Выводится Hello world.
   
 ## Самостоятельная работа №3
 ### Самостоятельно реализуйте наследование, продолжая работать с ранее созданным классом. Оно должно отличаться, от того, что указано в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
+def add_two_and_input():
+    try:
+        user_input = input("Введите число: ")
+        result = 2 + float(user_input)
+        print(f"Результат сложения 2 и введенного числа: {result}")
+    except ValueError:
+        print("Ошибка: Неподходящий тип данных. Ожидалось число.")
 
-    def Test_CPU(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
-
-
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-my_CPU.Test_CPU()
-
-
-class Intel_CPU(CPU):
-    def __init__(self, Brand, Models, Cores, Threads, TurboBoost):
-        super().__init__(Brand, Models, Cores, Threads)
-        self.TurboBoost = TurboBoost
-
-    def boost(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")
-
-al_CPU = Intel_CPU("Intel", "i7-8700", "6", "8", "2.0")
-al_CPU.Test_CPU()
-al_CPU.boost()
+add_two_and_input()
+add_two_and_input()
+add_two_and_input()
 ```
 ### Результат.
 ![Меню](Sam/pic/s3.png)
@@ -258,25 +274,34 @@ al_CPU.boost()
 
 В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")`: Выводится предложение.
-2. `print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")`: Выводится предложение. 
+1. `print(f"Результат сложения 2 и введенного числа: {result}")`: Выводится Результат сложения 2 и введенного числа: 3.0.
+2. `print(f"Результат сложения 2 и введенного числа: {result}")`: Выводится Результат сложения 2 и введенного числа: 4.0.
+3. `print(f"Результат сложения 2 и введенного числа: {result}")`: Выводится Результат сложения 2 и введенного числа: 5.0.
   
 ## Самостоятельная работа №4
 ### Самостоятельно реализуйте инкапсуляцию, продолжая работать с ранее созданным классом. Она должна отличаться, от того, что указана в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self._Brand = Brand
-        self.__Models = Models
-        self.___Cores = Cores
-        self.____Threads = Threads
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print(f"Декоратор: Вызывается функция {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"Декоратор: Функция {func.__name__} выполнена")
+        return result
+    return wrapper
 
-    def Test_CPU(self):
-        print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")
+@my_decorator
+def add_numbers(a, b):
+    return a + b
 
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-print(my_CPU._Brand)
-my_CPU.Test_CPU()
+@my_decorator
+def multiply_numbers(a, b):
+    return a * b
+
+result_sum = add_numbers(2, 3)
+print(f"Результат сложения: {result_sum}")
+
+result_product = multiply_numbers(4, 5)
+print(f"Результат умножения: {result_product}")
 ```
 ### Результат.
 ![Меню](Sam/pic/s4.png)
@@ -285,36 +310,43 @@ my_CPU.Test_CPU()
 
 В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")`: Выводится предложение.
-2. `print(my_CPU._Brand)`: Выводится функция.
+1. `print(f"Результат сложения: {result_sum}")`: Выводится Результат сложения: 5.
+2. `print(f"Результат умножения: {result_product}")`: Выводится Результат умножения: 20.
   
 ## Самостоятельная работа №5
 ### Самостоятельно реализуйте полиморфизм. Он должен отличаться, от того, что указан в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class Camera:
-    def take_picture(self):
-        print('фотографирую')
+class CustomException(Exception):
+    def __init__(self, message="Это мое собственное исключение"):
+        self.message = message
+        super().__init__(self.message)
 
-    def get_resolution(self):
-        print('разрешение недоступно')
+def example_function_1(value):
+    try:
+        if not isinstance(value, int):
+            raise CustomException("Ожидалось целое число")
+        print(f"Функция получила целое число: {value}")
+    except CustomException as ce:
+        print(f"Произошло исключение: {ce}")
 
+def example_function_2(value):
+    try:
+        if value < 0:
+            raise CustomException("Ожидалось неотрицательное число")
+        print(f"Функция получила неотрицательное число: {value}")
+    except CustomException as ce:
+        print(f"Произошло исключение: {ce}")
 
-class Phone:
-    def call(self):
-        print('зовущий')
+try:
+    example_function_1("abc")
+except CustomException as ce:
+    print(f"Произошло исключение: {ce}")
 
-    def charge(self):
-        print('зарядка')
-
-class CameraPhone(Camera, Phone):
-    pass
-
-camera_phone = CameraPhone()
-camera_phone.take_picture()
-camera_phone.get_resolution()
-camera_phone.call()
-camera_phone.charge()
+try:
+    example_function_2(-5)
+except CustomException as ce:
+    print(f"Произошло исключение: {ce}")
 ```
 ### Результат.
 ![Меню](Sam/pic/s5.png)
@@ -323,10 +355,9 @@ camera_phone.charge()
 
 В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print('фотографирую')`: Выводится фотографирую.
-2. `print('разрешение недоступно')`: Выводится разрешение недоступно.
-3. `print('зовущий')`: Выводится зовущий.
-4. `print('зарядка')`: Выводится зарядка.
+1. `print(f"Произошло исключение: {ce}")`: Выводится Ожидалось целое число.
+2. `print(f"Произошло исключение: {ce}")`: Выводится Ожидалось неотрицательное число.
+
 
 ## Общие выводы по теме
 Декораторы в Python используются для добавления дополнительного поведения к функциям или методам без изменения их исходного кода. Декоратор - это функция, которая принимает функцию в качестве аргумента и возвращает преобразованную функцию. Декораторы позволяют изменять поведение функции во время выполнения, например, добавить логирование вызовов или проверку аргументов. Исключения в Python используются для обработки ошибок и неожиданных ситуаций во время выполнения программы. Когда возникает ошибка, программа может выдать сообщение об ошибке и завершить работу или же обработать исключение с помощью блока try-except. В Python есть несколько встроенных исключений, таких как IndexError, TypeError и ValueError, которые возникают при определенных условиях. Вы также можете создать свои собственные исключения, если стандартные не подходят для вашей ситуации. 
