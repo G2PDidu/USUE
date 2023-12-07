@@ -173,7 +173,7 @@ class CPU:
 my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
 ```
 ### Результат.
-![Меню](Sam/pic/s1.png)
+![Меню](sam/pic/s1.png)
 
 В данном коде выводятся одна строка с использованием функции `my_CPU`. Каждая строка содержит разные значения:
 
@@ -197,7 +197,8 @@ my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
 my_CPU.Test_CPU()
 ```
 ### Результат.
-![Меню](Sam/pic/s2.png)
+![Меню](sam/pic/s2.1.png)
+![Меню](sam/pic/s2.2.png)
 
 ## Выводы
 
@@ -205,113 +206,5 @@ my_CPU.Test_CPU()
 
 1. `print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")`: Выводится предложение. 
   
-## Самостоятельная работа №3
-### Самостоятельно реализуйте наследование, продолжая работать с ранее созданным классом. Оно должно отличаться, от того, что указано в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-
-```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
-
-    def Test_CPU(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
-
-
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-my_CPU.Test_CPU()
-
-
-class Intel_CPU(CPU):
-    def __init__(self, Brand, Models, Cores, Threads, TurboBoost):
-        super().__init__(Brand, Models, Cores, Threads)
-        self.TurboBoost = TurboBoost
-
-    def boost(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")
-
-al_CPU = Intel_CPU("Intel", "i7-8700", "6", "8", "2.0")
-al_CPU.Test_CPU()
-al_CPU.boost()
-```
-### Результат.
-![Меню](Sam/pic/s3.png)
-
-## Выводы
-
-В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")`: Выводится предложение.
-2. `print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")`: Выводится предложение. 
-  
-## Самостоятельная работа №4
-### Самостоятельно реализуйте инкапсуляцию, продолжая работать с ранее созданным классом. Она должна отличаться, от того, что указана в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self._Brand = Brand
-        self.__Models = Models
-        self.___Cores = Cores
-        self.____Threads = Threads
-
-    def Test_CPU(self):
-        print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")
-
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-print(my_CPU._Brand)
-my_CPU.Test_CPU()
-```
-### Результат.
-![Меню](Sam/pic/s4.png)
-
-## Выводы
-
-В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")`: Выводится предложение.
-2. `print(my_CPU._Brand)`: Выводится функция.
-  
-## Самостоятельная работа №5
-### Самостоятельно реализуйте полиморфизм. Он должен отличаться, от того, что указан в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-
-```python
-class Camera:
-    def take_picture(self):
-        print('фотографирую')
-
-    def get_resolution(self):
-        print('разрешение недоступно')
-
-
-class Phone:
-    def call(self):
-        print('зовущий')
-
-    def charge(self):
-        print('зарядка')
-
-class CameraPhone(Camera, Phone):
-    pass
-
-camera_phone = CameraPhone()
-camera_phone.take_picture()
-camera_phone.get_resolution()
-camera_phone.call()
-camera_phone.charge()
-```
-### Результат.
-![Меню](Sam/pic/s5.png)
-  
-## Выводы
-
-В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print('фотографирую')`: Выводится фотографирую.
-2. `print('разрешение недоступно')`: Выводится разрешение недоступно.
-3. `print('зовущий')`: Выводится зовущий.
-4. `print('зарядка')`: Выводится зарядка.
-
 ## Общие выводы по теме
 Python позволяет работать с файлами различными способами, такими как чтение, запись, добавление и удаление данных. Для работы с файлами можно использовать встроенные функции, такие как open(), close() и read(), или модули, такие как os и io. Кроме того, Python поддерживает различные режимы доступа к файлам, такие как “r” для чтения, “w” для записи и “a” для добавления данных.
