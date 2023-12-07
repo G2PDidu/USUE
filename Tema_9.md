@@ -25,293 +25,244 @@
 ### Создайте класс “Car” с атрибутами производитель и модель. Создайте объект этого класса. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями.
 
 ```python
-class Car: #Класс для представления автомобиля.
-    def __init__(self, make, model): #Метод инициализации с параметрами: марка и модель автомобиля.
-        self.make = make    #Свойство класса для хранения марки автомобиля.
-        self.model = model  #Свойство класса для хранения модели автомобиля.
+class Ivan:
+    __slots__ = ['name']
 
-my_car = Car("Toyota", "Trueno") #Создаем экземпляр класса Car с маркой Toyota и моделью Trueno.
+    def __init__(self, name):
+        if name == 'Иван':
+            self.name = f"Да, я {name}"
+        else:
+            self.name = f"Я не {name}, а Иван"
+
+person1 = Ivan('Алексей')
+person2 = Ivan('Иван')
+print(person1.name)
+print(person2.name)
+
+person2.surname = 'Петров'
 ```
 
 ### Результат.
-![Меню](Lab/pic/l1.png)
+![Меню](lab/pic/l1.png)
 
 ## Выводы
 В данном коде выводятся одна строка с использованием функции `my_car`. Каждая строка содержит разные значения:
 
-1. `my_car = Car("Toyota", "Trueno")` #Создаем экземпляр класса Car с маркой Toyota и моделью Trueno.
+1. `print(person1.name)`: Выводится предложение.
+2. `print(person2.name)`: Выводится предложение.
 
 ## Лабораторная работа №2
 ### Дополните код из первого задания, добавив в него атрибуты и методы класса, заставьте машину “поехать”. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
-class Car: # Класс для представления автомобиля
-    def __init__(self, make, model): # Метод инициализации автомобиля с параметрами: марка и модель
-        self.make = make # Свойство класса для хранения марки
-        self.model = model # Свойство класса для хранения модели
+class Icecream:
+    def __init__(self, ingredient=None):
+        if isinstance(ingredient, str):
+            self.ingredient = ingredient
+        else:
+            self.ingredient = None
 
-    def drive(self): # Метод для управления автомобилем
-        print(f"Driving the {self.make} {self.model}") # Вывод информации о марке и модели
+    def composition(self):
+        if self.ingredient:
+            print(f"Мороженое с {self.ingredient}")
+        else:
+            print('Обычное мороженое')
 
-my_car = Car("Toyota", "Trueno") # Создание экземпляра класса Car с определенными параметрами
-my_car.drive() # Управление созданным экземпляром
+icecream = Icecream()
+icecream.composition()
+icecream = Icecream('шоколадом')
+icecream.composition()
+icecream = Icecream(5)
+icecream.composition()
 ```
 ### Результат.
-![Меню](Lab/pic/l2.png)
+![Меню](lab/pic/l2.png)
 
 ## Выводы
 
 В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(f"Driving the {self.make} {self.model}")`: Выводится предложение. 
+1. `icecream.composition()`: Выводится предложение.
+2. `icecream.composition()`: Выводится предложение.
+3. `icecream.composition()`: Выводится предложение. 
 
 ## Лабораторная работа №3
 ### Создайте новый класс “ElectricCar” с методом “charge” и атрибутом емкость батареи. Реализуйте его наследование от класса, созданного в первом задании. Заставьте машину поехать, а потом заряжаться. Михаил А. Панов Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль
 
 ```python
-class Car: #Он определяет основные характеристики автомобиля, такие как марка и модель. Также он имеет метод drive(), который выводит на экран сообщение о том, что автомобиль едет.
-    def __init__(self, make, model): #Это конструктор класса. Он инициализирует атрибуты make и model для каждого экземпляра класса.
-        self.make = make #Эта строка устанавливает атрибут make для экземпляра класса.
-        self.model = model #Эта строка делает то же самое для атрибута model.
-    def drive(self): #Данный метод имитирует процесс вождения автомобиля.
-        print(f"Driving the {self.make} {self.model}") #Эта строка выводит информацию о марке и модели автомобиля на экран.
-my_car = Car("Toyota", "Trueno") #Здесь создается экземпляр класса Car с маркой Toyota и моделью Trueno.
-my_car.drive() #Вызов метода drive() для экземпляра my_car имитирует процесс управления автомобилем.
-class ElectricCar(Car): #Этот класс наследует все методы и атрибуты от класса Car и добавляет новые.
-    def __init__(self, make, model, battery_capacity): #Конструктор этого класса принимает дополнительные параметры: емкость аккумулятора.
-        super().__init__(make, model) #Вызывается конструктор родительского класса для инициализации атрибутов make и model.
-        self.battery_capacity = battery_capacity #Атрибут battery_capacity присваивается экземпляру класса.
-    def charge(self): #имитирует зарядку аккумулятора.
-        print(f"Charging the {self.make} {self.model} with {self.battery_capacity}  kWh") #Вывод информации о процессе зарядки на экран.
-my_electric_car = ElectricCar("Telsa", "Model S", 75) #Создание экземпляра класса ElectricCar с маркой Telsa, моделью Model S и емкостью аккумулятора 75 kWh.
-my_electric_car.drive() #
+class MyClass:
+    def __init__(self, value):
+        self._value = value
+
+    def set_value(self, value):
+        self._value = value
+
+    def get_value(self):
+        return self._value
+
+    def del_value(self):
+        del self._value
+
+    value = property(get_value, set_value, del_value, "Свойство value")
+
+obj = MyClass(42)
+print(obj.get_value())
+obj.set_value(45)
+print(obj.get_value())
+obj.set_value(100)
+print(obj.get_value())
+obj.del_value()
+print(obj.get_value())
 ```
 ### Результат.
-![Меню](Lab/pic/l3.png)
+![Меню](lab/pic/l3.png)
 
 ## Выводы
 
 В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(f"Driving the {self.make} {self.model}")`: Выводится предложение.
-2. `print(f"Charging the {self.make} {self.model} with {self.battery_capacity}  kWh")`: Выводится предложение. 
-
+1. `obj = MyClass(42)`: Выводится значение.
+2. `obj = MyClass(45)`: Выводится значение.
+3. `obj = MyClass(100)`: Выводится значение.
 
 ## Лабораторная работа №4
 ### Реализуйте инкапсуляцию для класса, созданного в первом задании. Создайте защищенный атрибут производителя и приватный атрибут модели. Вызовите защищенный атрибут и заставьте машину поехать. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 ```python
-class Car: #Эта строка описывает класс с именем Car. Внутри фигурных скобок содержатся определения методов и переменных, которые принадлежат этому классу.
-    def __init__(self, make, model): #Это конструктор класса, который инициализирует его атрибуты. В данном случае он принимает два аргумента: make (марка автомобиля) и model (модель автомобиля).
-        self.make = make #Атрибут self.make устанавливается равным аргументу make.
-        self.model = model #То же самое происходит с атрибутом model и его аргументом model.
+class Mammal:
+    className = 'Mammal'
 
-    def drive(self): #Это метод, который “имитирует” вождение автомобиля. Он просто выводит сообщение на экран.
-        print(f"Driving the {self.make} {self.model}") #Эта строка выводит на экран информацию о марке и модели автомобиля.
+class Dog(Mammal):
+    species = 'canine'
+    sounds = 'wow'
 
-my_car = Car("Toyota", "Trueno") #Здесь создается экземпляр класса Car, который представляет автомобиль марки “Toyota” модели “Trueno”.
+class Cat(Mammal):
+    species = 'feline'
+    sounds = 'meow'
 
-
-print(my_car.make) #Эта строка выводит марку автомобиля, который был создан выше.
-my_car.drive() #Вызов метода drive() на Aэкземпляре my_car “имитирует” процесс вождения автомобиля.
+dog = Dog()
+print(f"Dog is {dog.className}, but they say {dog.sounds}")
+cat = Cat()
+print(f"Cat is {cat.className}, but they say {cat.sounds}")
 ```
 ### Результат.
-![Меню](Lab/pic/l4.png)
+![Меню](lab/pic/l4.png)
 
 ## Выводы
 
 В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(f"Driving the {self.make} {self.model}")`: Выводится предложение.
-2. `print(my_car.make)`: Выводится функция.
+1. `print(f"Dog is {dog.className}, but they say {dog.sounds}")`: Выводится предложение.
+2. `print(f"Cat is {cat.className}, but they say {cat.sounds}")`: Выводится предложение.
 
 ## Лабораторная работа №5
 ### Реализуйте полиморфизм создав основной (общий) класс “Shape”, а также еще два класса “Rectangle” и “Circle”. Внутри последних двух классов реализуйте методы для подсчета площади фигуры. После этого создайте массив с фигурами, поместите туда круг и прямоугольник, затем при помощи цикла выведите их площади. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
-class Shape: #Определяется класс Shape.
-    def area(self): #Определяется метод area в классе Shape. Пока он не имеет реализации и просто использует оператор pass.
-        pass #Заканчивается определение класса Shape.
-class Rectangle(Shape): #Создаем класс Rectangle, который наследуется от класса Shape
-    def __init__(self, width, height): #Определяем конструктор класса, который принимает параметры width и height
-        self.width = width #
-        self.height = height #Инициализируем атрибуты width и height с помощью переданных значений
+class Russian:
+    @staticmethod
+    def greeting():
+        print("Привет")
 
-    def area(self): #Определяем метод area, который возвращает площадь прямоугольника, вычисленную как произведение ширины и высоты
-        return self.width * self.height #
+class English:
+    @staticmethod
+    def greeting():
+        print("Hello")
 
-class Circle(Shape): #Определяется класс Circle, который наследуется от класса Shape.
-    def __init__(self, radius): #Определяется метод инициализации (__init__) в классе Circle. Он принимает один параметр - radius (радиус).
-        self.radius = radius #В методе инициализации класса Circle устанавливается значение атрибута radius на основе переданного параметра.
+def greet(language):
+    language.greeting()
 
-    def area(self): #Определяется метод area для класса Circle, который переопределяет метод area из класса Shape.
-        return 3.14 * self.radius * self.radius #В методе area класса Circle вычисляется и возвращается площадь круга, умножая квадрат радиуса на число Pi (3.14).
-
-shapes = [Rectangle(4, 5), Circle(3)] #Создается список shapes, который содержит два элемента: объекты классов Rectangle и Circle, созданные с определенными параметрами.
-for shape in shapes: #Выполняется цикл, который проходит по каждому элементу списка shapes.
-    print(shape.area()) #Выводится площадь текущей фигуры (shape) с помощью вызова метода area() для текущего объекта.
+ivan = Russian()
+greet(ivan)
+john = English()
+greet(john)
 ```
 ### Результат.
-![Меню](Lab/pic/l5.png)
+![Меню](lab/pic/l5.png)
 
 ## Выводы
 
-В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
+В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
 
-1. `print(shape.area())`: Выводится площадь текущей фигуры (shape) с помощью вызова метода area() для текущего объекта.
+1. `print("Привет")`: Выводится слово.
+2. `print("Hello")`: Выводится слово.
 
 ## Самостоятельная работа №1
 ### Самостоятельно создайте класс и его объект. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
+class Tomato:
+    states = {'unripe': 0, 'ripe': 1, 'overripe': 2}
 
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
+    def __init__(self, index):
+        self._index = index
+        self._state = self.states['unripe']
+
+    def grow(self):
+        if self._state == self.states['ripe']:
+            return "Can't grow overripe tomato"
+        else:
+            next_state = self._state if self._state == 'overripe' else self._state + 1
+            self._state = next_state
+            return f"Grown tomato #{self._index} from '{self._state}' to '{next_state}'"
+
+    def is_ripe(self):
+        return self._state == self.states['ripe']
+
+
+class TomatoBush:
+    def __init__(self, num_tomatoes):
+        self.tomatoes = [Tomato(i) for i in range(1, num_tomatoes + 1)]
+
+    def grow_all(self):
+        for tomato in self.tomatoes:
+            tomato.grow()
+
+    def are_all_ripe(self):
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
+
+    def give_away_all(self):
+        self.tomatoes = []
+
+
+class Gardener:
+    def __init__(self, name: str, plant: TomatoBush):
+        self.__name = name
+        self.__plant = plant
+
+    @property
+    def name(self) -> str:
+        return self.__name
+
+    @property
+    def plant(self) -> TomatoBush:
+        return self.__plant
+
+    def work(self) -> None:
+        self.__plant.grow_all()
+
+    def harvest(self) -> bool:
+        if not self.plant.are_all_ripe():
+            print('Warning: not all fruits are ripe!')
+            return False
+        else:
+            print(f'Harvesting from plant {self.plant}')
+            return True
+
+    @staticmethod
+    def knowledge_base() -> None:
+        print('The static method knowledge_base prints information about gardening.')
+
+
+gardener = Gardener("John", TomatoBush(5))
+gardener.work()
+print(gardener.harvest())
 ```
 ### Результат.
-![Меню](Sam/pic/s1.png)
+![Меню](sam/pic/s1.png)
 
-В данном коде выводятся одна строка с использованием функции `my_CPU`. Каждая строка содержит разные значения:
+В данном коде выводятся одна строка с использованием функции `print`. Каждая строка содержит разные значения:
 
-1. `my_CPU = CPU("Amd", "Ryzen 7", "8", "16")`.
-
-## Самостоятельная работа №2
-### Самостоятельно создайте атрибуты и методы для ранее созданного класса. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-
-```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
-
-    def Test_CPU(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
-
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-my_CPU.Test_CPU()
-```
-### Результат.
-![Меню](Sam/pic/s2.png)
-
-## Выводы
-
-В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")`: Выводится предложение. 
-  
-## Самостоятельная работа №3
-### Самостоятельно реализуйте наследование, продолжая работать с ранее созданным классом. Оно должно отличаться, от того, что указано в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-
-```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self.Brand = Brand
-        self.Models = Models
-        self.Cores = Cores
-        self.Threads = Threads
-
-    def Test_CPU(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")
-
-
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-my_CPU.Test_CPU()
-
-
-class Intel_CPU(CPU):
-    def __init__(self, Brand, Models, Cores, Threads, TurboBoost):
-        super().__init__(Brand, Models, Cores, Threads)
-        self.TurboBoost = TurboBoost
-
-    def boost(self):
-        print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")
-
-al_CPU = Intel_CPU("Intel", "i7-8700", "6", "8", "2.0")
-al_CPU.Test_CPU()
-al_CPU.boost()
-```
-### Результат.
-![Меню](Sam/pic/s3.png)
-
-## Выводы
-
-В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print(f"Процессор {self.Brand} {self.Models} имеет {self.Cores} ядер и {self.Threads} потоков")`: Выводится предложение.
-2. `print(f"Процессор {self.Brand} {self.Models} имеет {self.TurboBoost} версии")`: Выводится предложение. 
-  
-## Самостоятельная работа №4
-### Самостоятельно реализуйте инкапсуляцию, продолжая работать с ранее созданным классом. Она должна отличаться, от того, что указана в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-```python
-class CPU:
-    def __init__(self, Brand, Models, Cores, Threads):
-        self._Brand = Brand
-        self.__Models = Models
-        self.___Cores = Cores
-        self.____Threads = Threads
-
-    def Test_CPU(self):
-        print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")
-
-my_CPU = CPU("Amd", "Ryzen 7", "8", "16")
-print(my_CPU._Brand)
-my_CPU.Test_CPU()
-```
-### Результат.
-![Меню](Sam/pic/s4.png)
-
-## Выводы
-
-В данном коде выводятся две строки с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print(f"Процессор {self._Brand} {self.__Models} имеет {self.___Cores} ядер и {self.____Threads} потоков")`: Выводится предложение.
-2. `print(my_CPU._Brand)`: Выводится функция.
-  
-## Самостоятельная работа №5
-### Самостоятельно реализуйте полиморфизм. Он должен отличаться, от того, что указан в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
-
-```python
-class Camera:
-    def take_picture(self):
-        print('фотографирую')
-
-    def get_resolution(self):
-        print('разрешение недоступно')
-
-
-class Phone:
-    def call(self):
-        print('зовущий')
-
-    def charge(self):
-        print('зарядка')
-
-class CameraPhone(Camera, Phone):
-    pass
-
-camera_phone = CameraPhone()
-camera_phone.take_picture()
-camera_phone.get_resolution()
-camera_phone.call()
-camera_phone.charge()
-```
-### Результат.
-![Меню](Sam/pic/s5.png)
-  
-## Выводы
-
-В данном коде выводятся одна строка с использованием функции `print()`. Каждая строка содержит разные значения:
-
-1. `print('фотографирую')`: Выводится фотографирую.
-2. `print('разрешение недоступно')`: Выводится разрешение недоступно.
-3. `print('зовущий')`: Выводится зовущий.
-4. `print('зарядка')`: Выводится зарядка.
+1. `print(gardener.harvest())`: Выводится предложение.
 
 ## Общие выводы по теме
 Python позволяет работать с файлами различными способами, такими как чтение, запись, добавление и удаление данных. Для работы с файлами можно использовать встроенные функции, такие как open(), close() и read(), или модули, такие как os и io. Кроме того, Python поддерживает различные режимы доступа к файлам, такие как “r” для чтения, “w” для записи и “a” для добавления данных.
